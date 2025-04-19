@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Programa integral de robótica educativa para escuelas con LEGO Education. Desarrollo de habilidades STEM en estudiantes de primaria y secundaria.">
+    <meta name="keywords" content="robótica educativa, LEGO Education, STEM, programación para niños, talleres de robótica, educación tecnológica, Villahermosa">
+    <meta name="author" content="Ángel Díaz">
+    <title>Proyecto de Robótica Escolar | Innovación Educativa en STEM</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    </noscript>
+    
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+    
+    <!-- Schema.org markup for Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "Proyecto de Robótica Escolar",
+      "description": "Programa de robótica educativa para escuelas primarias y secundarias",
+      "url": "https://tusitio.com",
+      "logo": "https://tusitio.com/logo.png",
+      "sameAs": [
+        "https://facebook.com/tusitio",
+        "https://twitter.com/tusitio"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+529931100903",
+        "contactType": "customer service",
+        "email": "angel.diaz9090@gmail.com",
+        "areaServed": "Villahermosa, Tabasco"
+      }
+    }
+    </script>
+    
+    <style>
+        /* Variables CSS optimizadas */
+        :root {
+            --primary: #0056b3;
+            --secondary: #4a90e2;
+            --dark: #333;
+            --light: #f9f9f9;
+            --text: #444;
+            --white: #fff;
+            --shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* Reset y estilos base optimizados */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--light);
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            padding-top: 80px;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            color: var(--dark);
+            line-height: 1.2;
+            margin-bottom: 0.75em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 0.75em 1.5em;
+            border-radius: var(--radius);
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover, .btn:focus {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            outline: none;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Header optimizado */
+        header {
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 15px 0;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 1.5rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--primary);
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after, 
+        .nav-links a:focus::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section optimizada */
+        #inicio {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--white);
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Secciones comunes optimizadas */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-light {
+            background-color: var(--white);
+        }
+
+        .section-dark {
+            background-color: var(--light);
+        }
+
+        .section-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.5rem;
+        }
+
+
+        .section-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: var(--text);
+        }
+
+        /* ¿Por qué Robótica? optimizado */
+        #porque .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .feature-card:hover, .feature-card:focus-within {
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Propuesta optimizada */
+        #propuesta .proposal-steps {
+            margin-top: 3rem;
+            text-align: left;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: var(--white);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-weight: bold;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        /* Recursos optimizados */
+        #recursos ul {
+            list-style: none;
+            text-align: left;
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+        }
+
+        #recursos li {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        #recursos li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: 1.5rem;
+            margin-top: 2.5rem;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .resource-card:hover, .resource-card:focus-within {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-img {
+            height: 180px;
+            overflow: hidden;
+        }
+
+        .resource-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .resource-card:hover .resource-img img,
+        .resource-card:focus-within .resource-img img {
+            transform: scale(1.05);
+        }
+
+        .resource-info {
+            padding: 1.5rem;
+        }
+
+        /* Sobre mí optimizado */
+        #sobre-mi .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text {
+            text-align: left;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .about-text i {
+            position: absolute;
+            left: 0;
+            top: 0.2rem;
+            color: var(--primary);
+        }
+
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .gallery-item:first-child {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img, 
+        .gallery-item:focus-within img {
+            transform: scale(1.05);
+        }
+
+        /* Contacto optimizado */
+        #contacto .contact-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-top: 2.5rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-form .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.2);
+        }
+
+        .contact-form textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer optimizado */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-link:hover, .social-link:focus {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            outline: none;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Back to top button optimizado */
+        .back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            width: 3rem;
+            height: 3rem;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+            cursor: pointer;
+            border: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover, .back-to-top:focus {
+            background-color: var(--secondary);
+            transform: translateY(-5px);
+            outline: none;
+        }
+
+        /* Animaciones optimizadas */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Mejoras de accesibilidad */
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+
+        [aria-hidden="true"] {
+            display: none;
+        }
+
+        /* Responsive optimizado */
+        @media (max-width: 992px) {
+            #sobre-mi .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .about-gallery {
+                margin-top: 2rem;
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--white);
+                flex-direction: column;
+                align-items: center;
+                padding: 2.5rem 0;
+                transition: var(--transition);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links a {
+                font-size: 1.2rem;
+                padding: 1rem 0;
+            }
+
+            .section-padding {
+                padding: 3.5rem 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .step {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 0.75rem;
+            }
+
+            #contacto .contact-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Optimización de fuentes */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+            
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container">
+            <a href="#inicio" class="logo">Robótica <span>Escolar</span></a>
+            <button class="mobile-menu-btn" aria-label="Menú" aria-expanded="false" aria-controls="nav-links">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav class="nav-links" id="nav-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#porque">¿Por qué Robótica?</a>
+                <a href="#propuesta">Propuesta</a>
+                <a href="#recursos">Recursos</a>
+                <a href="#sobre-mi">Sobre mí</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="section">
+        <img src="https://mexico.unir.net/wp-content/uploads/sites/6/2024/07/Robotica-educativa-que-es-y-cuales-son-sus-ventajas.jpg" 
+             alt="Niños aprendiendo robótica educativa trabajando con kits de LEGO" 
+             class="hero-bg" 
+             loading="lazy"
+             width="1920"
+             height="1080">
+        <div class="hero-content animate">
+            <h1>¡Transformemos la Educación con Robótica!</h1>
+            <p class="delay-1">Una propuesta innovadora para integrar la robótica en el aula y desarrollar habilidades STEM</p>
+            <a href="#contacto" class="btn delay-2">Contáctame</a>
+        </div>
+    </section>
+
+    <!-- ¿Por qué Robótica? -->
+    <section id="porque" class="section section-light" aria-labelledby="porque-title">
+        <div class="container">
+            <h2 id="porque-title" class="section-title animate">¿Por qué Robótica Educativa?</h2>
+            <div class="section-content animate delay-1">
+                <p>La robótica fomenta el pensamiento lógico, la creatividad y el trabajo en equipo. Es una herramienta poderosa para preparar a los estudiantes para los desafíos del siglo XXI, integrando ciencia, tecnología, ingeniería y matemáticas (STEM) de una forma práctica y divertida.</p>
+            </div>
+            <div class="features">
+                <div class="feature-card animate delay-1" tabindex="0">
+                    <div class="feature-icon" aria-hidden="true">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Desarrollo Cognitivo</h3>
+                    <p>Estimula el pensamiento lógico, la resolución de problemas y la creatividad en los estudiantes.</p>
+                </div>
+                <div class="feature-card animate delay-2" tabindex="0">
+                    <div class="feature-icon" aria-hidden="true">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Trabajo en Equipo</h3>
+                    <p>Fomenta la colaboración y comunicación entre estudiantes para alcanzar objetivos comunes.</p>
+                </div>
+                <div class="feature-card animate delay-3" tabindex="0">
+                    <div class="feature-icon" aria-hidden="true">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Preparación Futura</h3>
+                    <p>Desarrolla habilidades tecnológicas esenciales para el mercado laboral del futuro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Propuesta -->
+    <section id="propuesta" class="section section-dark" aria-labelledby="propuesta-title">
+        <div class="container">
+            <h2 id="propuesta-title" class="section-title animate">Propuesta Educativa</h2>
+            <div class="section-content animate delay-1">
+              <p>Ofrecer un programa de robótica adaptado al nivel educativo del colegio, iniciando desde los principios básicos de la mecánica y la programación, hasta llegar a la creación de proyectos con sensores, motores y programación por bloques, utilizando kits de LEGO Education.</p>
+          </div>
+            <div class="proposal-steps">
+                <div class="step animate delay-1">
+                    <div class="step-number" aria-hidden="true">1</div>
+                    <div class="step-content">
+                        <h3>Introducción a la Robótica</h3>
+                        <p>Conceptos básicos de mecánica y programación con herramientas visuales adaptadas a cada edad.</p>
+                    </div>
+                </div>
+                <div class="step animate delay-2">
+                    <div class="step-number" aria-hidden="true">2</div>
+                    <div class="step-content">
+                        <h3>Proyectos Intermedios</h3>
+                        <p>Construcción de robots con sensores y motores usando kits LEGO Education WeDo y SPIKE Prime.</p>
+                    </div>
+                </div>
+                <div class="step animate delay-3">
+                    <div class="step-number" aria-hidden="true">3</div>
+                    <div class="step-content">
+                        <h3>Proyectos Avanzados</h3>
+                        <p>Desarrollo de soluciones robóticas para problemas reales con programación avanzada y pensamiento de diseño.</p>
+                    </div>
+                </div>
+            </div>
+      </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="recursos" class="section section-light" aria-labelledby="recursos-title">
+        <div class="container">
+            <h2 id="recursos-title" class="section-title animate">Recursos necesarios&nbsp; &nbsp; &nbsp;</h2>
+            <div class="section-content animate delay-1">
+              <p>Para implementar un programa completo de robótica educativa en tu institución, son necesarios los siguientes recursos</p>
+          </div>
+            <ul class="animate delay-2">
+                <li>Sets de LEGO Education (Máquinas simples, WeDo 2.0, SPIKE Prime)</li>
+                <li>Tabletas o laptops para programación con software especializado</li>
+                
+                <li>Proyector o pantalla interactiva para demostraciones</li>
+                <li>Material didáctico especializado por niveles educativos</li>
+                <li>Software educativo actualizado (Scratch, LEGO Education, Python básico)</li>
+            </ul>
+            <div class="resources-grid">
+                <div class="resource-card animate delay-1" tabindex="0">
+                    <div class="resource-img">
+                      <img src="../../../Downloads/LE_SPIKE_Essential_Lifestyle_2HY21_45345_34.jpg" 
+                             alt="Kits de robótica LEGO Education SPIKE Prime desplegados en una mesa" 
+                             loading="lazy"
+                             width="6282"
+                             height="4188">
+                    </div>
+                    <div class="resource-info">
+                        <h3>LEGO Education</h3>
+                        <p>Kits completos para todos los niveles educativos con piezas especializadas</p>
+                    </div>
+              </div>
+                <div class="resource-card animate delay-2" tabindex="0">
+                    <div class="resource-img">
+                        <img src="https://www.educaciontrespuntocero.com/wp-content/uploads/2017/06/swift-playgrounds-app-education-978x652.jpg" 
+                             alt="Equipo de computación moderno para programación educativa" 
+                             loading="lazy"
+                             width="600"
+                             height="400">
+                    </div>
+                    <div class="resource-info">
+                        <h3>Equipo Tecnológico</h3>
+                        <p>Tabletas y laptops con software educativo preinstalado</p>
+                    </div>
+                </div>
+                <div class="resource-card animate delay-3" tabindex="0">
+                    <div class="resource-img">
+                      <img src="../../../Downloads/LEGO_Education_Spike-Train_Program.png" 
+                             alt="Aula de robótica equipada con mesas de trabajo y herramientas" 
+                             loading="lazy"
+                             width="2400"
+                             height="1200">
+                    </div>
+                    <div class="resource-info">
+                        <h3>Lenguajes de programación&nbsp;</h3>
+                        <p>Diversos lenguajes de programación para el aprendizaje adecuado por niveles educativos.</p>
+                  </div>
+                </div>
+          </div>
+      </div>
+    </section>
+
+    <!-- Sobre mí -->
+    <section id="sobre-mi" class="section section-dark" aria-labelledby="sobre-mi-title">
+        <div class="container">
+            <h2 id="sobre-mi-title" class="section-title animate">Mi Experiencia en Educación Tecnológica</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="animate"><i class="fas fa-user-graduate" aria-hidden="true"></i> Desde muy joven he estado enfocado en el mundo de la tecnología, comenzando en el área de soporte técnico para la Secretaría de Educación.</p>
+                    <p class="animate delay-1"><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i> Fui docente universitario en CICPE, impartiendo materias de informática e informática forense.</p>
+                    <p class="animate delay-2"><i class="fas fa-tools" aria-hidden="true"></i> Trabajé como ingeniero de campo en HP Computers, y posteriormente en el sector petrolero con Perfolat y Schlumberger, brindando soporte a sensores y redes satelitales.</p>
+                    <p class="animate delay-1"><i class="fas fa-code" aria-hidden="true"></i> En el Colegio Scout enseñé programación, desarrollo web, diseño gráfico, edición de fotos y robótica con herramientas de LEGO Education.</p>
+                    <p class="animate delay-2"><i class="fas fa-robot" aria-hidden="true"></i> Fui Head Coach en la Preparatoria Tec Milenio en el área de robots industriales, guiando a estudiantes en automatización avanzada.</p>
+                    <p class="animate delay-3"><i class="fas fa-database" aria-hidden="true"></i> También impartí clases en Universidad Mundo Maya en las materias de bases de datos, informática y diseño de páginas web.</p>
+                    <p class="animate delay-2"><i class="fas fa-child" aria-hidden="true"></i> Más recientemente, trabajé año y medio en el área de robótica en nivel primaria en el Colegio Mundo Maya, combinando tecnología y educación para niños.</p>
+                </div>
+                <div class="about-gallery">
+                    <div class="gallery-item animate delay-1" tabindex="0">
+                      <img src="../../../Downloads/92d8804e-58ed-438e-86bb-0da2f84fd6ad.jpg" 
+                             alt="Profesor explicando conceptos de robótica a un grupo de estudiantes" 
+                             loading="lazy"
+                             width="1536"
+                             height="1152">
+                    </div>
+                    <div class="gallery-item animate delay-2" tabindex="0">
+                      <img src="../../../Downloads/descarga.jpg" 
+                             alt="Estudiantes trabajando en equipo en un proyecto de robótica" 
+                             loading="lazy"
+                             width="1008"
+                             height="756">
+                    </div>
+                    <div class="gallery-item animate delay-3" tabindex="0">
+                        <img src="../../../Downloads/cienciatecnologia.jpg" 
+                             alt="Robot educativo construido con piezas LEGO por estudiantes" 
+                             loading="lazy"
+                             width="2048"
+                             height="1365">&nbsp;
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section section-light" aria-labelledby="contacto-title">
+        <div class="container">
+            <h2 id="contacto-title" class="section-title animate">Contacto</h2>
+            <div class="contact-container animate delay-1">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <p><a href="tel:+529931100903">9931100903</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <p><a href="mailto:angel.diaz9090@gmail.com">angel.diaz9090@gmail.com</a></p>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon" aria-hidden="true">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <p>Villahermosa, Tabasco, México</p>
+                    </div>
+                </div>
+                <form class="contact-form" id="contact-form" aria-label="Formulario de contacto">
+                    <div class="form-group">
+                        <label for="name">Nombre completo</label>
+                        <input type="text" id="name" name="name" required autocomplete="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico</label>
+                        <input type="email" id="email" name="email" required autocomplete="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Enviar Mensaje</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+   <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="social-links">
+          <a href="https://www.facebook.com/angel.diazmorales" class="social-link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+          <a href="https://x.com/tuUsuario" class="social-link" aria-label="X" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-x-twitter"></i> <!-- Ícono de X -->
+                </a>
+          <a href="https://www.tiktok.com/@tuUsuario" class="social-link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-tiktok"></i> <!-- Nuevo ícono de TikTok -->
+                </a>
+          <a href="https://www.instagram.com/angel_diazm/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-instagram"></i>
+                </a>
+          </div>
+          <p class="copyright">&copy; <span id="current-year">2025</span> Proyecto de Robótica Escolar. Ángel de Jesús Díaz Morales.</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- Back to top button -->
+    <button class="back-to-top" aria-label="Volver arriba">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript optimizado -->
+    <script>
+        // Mobile menu toggle optimizado
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.getElementById('nav-links');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', !isExpanded);
+                navLinks.classList.toggle('active');
+                
+                if (!isExpanded) {
+                    document.documentElement.style.overflow = 'hidden';
+                } else {
+                    document.documentElement.style.overflow = '';
+                }
+            });
+
+            // Cerrar menú al hacer clic en enlace
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                    document.documentElement.style.overflow = '';
+                });
+            });
+
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 100);
+            });
+
+            // Back to top button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            window.addEventListener('scroll', () => {
+                backToTopBtn.classList.toggle('visible', window.scrollY > 300);
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                backToTopBtn.blur();
+            });
+
+            // Form submission con validación mejorada
+            const contactForm = document.getElementById('contact-form');
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(contactForm);
+                const data = Object.fromEntries(formData);
+                
+                // Validación simple
+                if (!data.name || !data.email || !data.message) {
+                    alert('Por favor completa todos los campos requeridos');
+                    return;
+                }
+                
+                // Simulación de envío (reemplazar con código real)
+                try {
+                    // Aquí iría la llamada a tu backend o servicio de email
+                    console.log('Datos del formulario:', data);
+                    
+                    // Simular retardo de red
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    
+                    alert('Gracias por tu mensaje. Me pondré en contacto contigo pronto.');
+                    contactForm.reset();
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Hubo un error al enviar tu mensaje. Por favor inténtalo más tarde.');
+                }
+            });
+
+            // Scroll animations con Intersection Observer
+            const animateElements = document.querySelectorAll('.animate');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            animateElements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Actualizar año del copyright
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        });
+
+        // Carga diferida de imágenes
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+            });
+        } else {
+            // Polyfill para lazy loading si el navegador no lo soporta
+            const lazyLoad = function() {
+                const lazyImages = [].slice.call(document.querySelectorAll('img[loading="lazy"]'));
+                
+                if ('IntersectionObserver' in window) {
+                    const lazyImageObserver = new IntersectionObserver(function(entries) {
+                        entries.forEach(function(entry) {
+                            if (entry.isIntersecting) {
+                                const lazyImage = entry.target;
+                                lazyImage.src = lazyImage.dataset.src;
+                                lazyImageObserver.unobserve(lazyImage);
+                            }
+                        });
+                    });
+
+                    lazyImages.forEach(function(lazyImage) {
+                        lazyImageObserver.observe(lazyImage);
+                    });
+                }
+            };
+            
+            document.addEventListener('DOMContentLoaded', lazyLoad);
+            window.addEventListener('load', lazyLoad);
+            window.addEventListener('resize', lazyLoad);
+            window.addEventListener('scroll', lazyLoad);
+        }
+    </script>
+</body>
+</html>
